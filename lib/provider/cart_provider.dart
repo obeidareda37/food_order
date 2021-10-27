@@ -1,19 +1,28 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:fastfood_app/const/cart_consts.dart';
 import 'package:fastfood_app/helpers/auth_helpers.dart';
+import 'package:fastfood_app/helpers/firebase_realtime_helpers.dart';
 import 'package:fastfood_app/model/restaurant_model/cart_model.dart';
 import 'package:fastfood_app/model/restaurant_model/food_model.dart';
+import 'package:fastfood_app/model/restaurant_model/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
 class CartProvider with ChangeNotifier {
+  TextEditingController fNameController = TextEditingController();
+  TextEditingController lNameController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController commentController = TextEditingController();
+  bool isSuccess = false;
+
   List<CartModel> cart = List<CartModel>.empty(growable: true);
   final box = GetStorage();
 
   getCart(String restaurantId) => cart.where((element) =>
       element.restaurantId == restaurantId &&
-      element.userUid == AuthHelpers.authHelpers.getUserId());
+      element.userUid == AuthHelpers.authHelpers.getUserId()).toList();
 
   addToCart(
     FoodModel foodModel,
@@ -109,9 +118,37 @@ class CartProvider with ChangeNotifier {
   //   }
   // }
 
+  restController() {
+    fNameController.clear();
+    lNameController.clear();
+    addressController.clear();
+    commentController.clear();
+  }
+
   getCartNeedUpdate(CartModel cartItem, String restaurantId) =>
       cart.firstWhere((element) =>
           element.id == cartItem.id &&
           element.restaurantId == restaurantId &&
           element.userUid == cartItem.userUid);
+
+  writeOrderToFirebase(OrderModel orderModel) async {
+    try {
+      await FirebaseRealTimeHelpers.realTimeHelpers
+          .writeOrderToFirebase(orderModel);
+      restController();
+      isSuccess = true;
+      notifyListeners();
+    } on Exception catch (e) {
+      isSuccess = false;
+      notifyListeners();
+    }
+  }
+
+  int createOrderNumber(int original) {
+    return original + new Random().nextInt(1000);
+  }
+
+  double calculateFinalPayment(double subTotal, double discount) {
+    return subTotal - (subTotal * (discount / 100));
+  }
 }

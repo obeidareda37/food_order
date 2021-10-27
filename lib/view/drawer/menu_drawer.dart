@@ -2,6 +2,7 @@ import 'package:fastfood_app/const/const_text.dart';
 import 'package:fastfood_app/provider/auth_provider.dart';
 import 'package:fastfood_app/service/custom_dialog.dart';
 import 'package:fastfood_app/service/route_helpers.dart';
+import 'package:fastfood_app/view/cart_screen/cart_screen.dart';
 import 'package:fastfood_app/view/home_screens/category_screen.dart';
 import 'package:fastfood_app/view/home_screens/home_screen.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
@@ -78,6 +79,18 @@ class DrawerMenu extends StatelessWidget {
                   .goToPageReplacement(HomeScreen.routeName),
               icon: Icons.restaurant_rounded,
             ),
+            SizedBox(
+              height: 15,
+            ),
+            Divider(
+              thickness: 1,
+            ),
+            DrawerItemWidget(
+              text: 'Cart',
+              onTap: () => RouteHelper.routeHelper
+                  .goToPageReplacement(CartScreen.routeName),
+              icon: Icons.shopping_cart,
+            ),
             Spacer(),
             DrawerItemWidget(
               text: 'Logout',
@@ -91,6 +104,10 @@ class DrawerMenu extends StatelessWidget {
                     });
               },
               icon: Icons.restaurant_rounded,
+            ),
+
+            SizedBox(
+              height: 5,
             ),
           ],
         ),

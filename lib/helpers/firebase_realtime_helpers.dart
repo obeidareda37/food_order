@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:fastfood_app/const/reference_database.dart';
 import 'package:fastfood_app/model/restaurant_model/category_model.dart';
+import 'package:fastfood_app/model/restaurant_model/order_model.dart';
 import 'package:fastfood_app/model/restaurant_model/popular_item_model.dart';
 import 'package:fastfood_app/model/restaurant_model/restaurant_model.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -84,5 +85,21 @@ class FirebaseRealTimeHelpers {
     });
 
     return list;
+  }
+
+  Future<bool> writeOrderToFirebase(OrderModel orderModel) async {
+    try {
+      await firebaseDatabase
+          .reference()
+          .child(RESTAURANT_REF)
+          .child(orderModel.restaurantId!)
+          .child(ORDER_REF)
+          .child(orderModel.orderNumber!)
+          .set(orderModel.toJson());
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
   }
 }

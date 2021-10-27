@@ -1,12 +1,15 @@
 import 'package:fastfood_app/const/cart_consts.dart';
 import 'package:fastfood_app/const/colors.dart';
+import 'package:fastfood_app/helpers/auth_helpers.dart';
 import 'package:fastfood_app/provider/cart_provider.dart';
 import 'package:fastfood_app/provider/restaurnt_provider.dart';
 import 'package:fastfood_app/service/custom_dialog.dart';
 import 'package:fastfood_app/service/route_helpers.dart';
+import 'package:fastfood_app/view/place_order_screen/place_order_screen.dart';
 import 'package:fastfood_app/widget/cart_widget/cart_image_widget.dart';
 import 'package:fastfood_app/widget/cart_widget/cart_info.dart';
 import 'package:fastfood_app/widget/cart_widget/cart_total_widget.dart';
+import 'package:fastfood_app/widget/custom_button/custom_button_widget.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -142,6 +145,21 @@ class _CartScreenState extends State<CartScreen> {
                       itemCount: provider.cart.length,
                     )),
                     TotalWidget(),
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 2.h, horizontal: 6.w),
+                      width: double.infinity,
+                      height: 50.h,
+                      child: CustomButtonWidget(
+                        onPressed: () {
+                          // provider.getCart(
+                          //     resProvider.selectedRestaurant!.restaurantId!),
+                          RouteHelper.routeHelper
+                              .goToPage(PlaceOrderScreen.routeName);
+                        },
+                        text: 'Checkout',
+                      ),
+                    ),
                   ],
                 )
               : Center(

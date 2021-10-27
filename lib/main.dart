@@ -14,6 +14,7 @@ import 'package:fastfood_app/view/home_screens/food_list_screen.dart';
 import 'package:fastfood_app/view/home_screens/home_restaurant_page.dart';
 import 'package:fastfood_app/view/home_screens/home_screen.dart';
 import 'package:fastfood_app/view/onboarding_screen/onboarding_screen.dart';
+import 'package:fastfood_app/view/place_order_screen/place_order_screen.dart';
 import 'package:fastfood_app/view/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
             FoodListScreen.routeName: (context) => FoodListScreen(),
             FoodDetailsScreen.routeName: (context) => FoodDetailsScreen(),
             CartScreen.routeName: (context) => CartScreen(),
+            PlaceOrderScreen.routeName: (context) => PlaceOrderScreen(),
           },
           home: App(),
         ),
