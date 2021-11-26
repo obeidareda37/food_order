@@ -7,14 +7,15 @@ import 'package:fastfood_app/view/auth_screen/forget_password.dart';
 import 'package:fastfood_app/view/auth_screen/login_screen.dart';
 import 'package:fastfood_app/view/auth_screen/register_screen.dart';
 import 'package:fastfood_app/view/cart_screen/cart_screen.dart';
-import 'package:fastfood_app/view/drawer/drawer_zoom_screen.dart';
+import 'package:fastfood_app/view/drawer/menu_drawer.dart';
 import 'package:fastfood_app/view/home_screens/category_screen.dart';
 import 'package:fastfood_app/view/home_screens/food_details_screen.dart';
 import 'package:fastfood_app/view/home_screens/food_list_screen.dart';
 import 'package:fastfood_app/view/home_screens/home_restaurant_page.dart';
 import 'package:fastfood_app/view/home_screens/home_screen.dart';
-import 'package:fastfood_app/view/onboarding_screen/onboarding_screen.dart';
-import 'package:fastfood_app/view/place_order_screen/place_order_screen.dart';
+import 'package:fastfood_app/view/order_screens/order_history_details_screen.dart';
+import 'package:fastfood_app/view/order_screens/order_history_screen.dart';
+import 'package:fastfood_app/view/order_screens/place_order_screen.dart';
 import 'package:fastfood_app/view/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -65,12 +66,14 @@ class MyApp extends StatelessWidget {
             ForgetPassword.routeName: (context) => ForgetPassword(),
             SplashScreen.routeName: (context) => SplashScreen(),
             HomeRestaurantPage.routeName: (context) => HomeRestaurantPage(),
-            DrawerZoom.routeName: (context) => DrawerZoom(),
+            DrawerMenu.routeName: (context) => DrawerMenu(),
             CategoryScreen.routeName: (context) => CategoryScreen(),
             FoodListScreen.routeName: (context) => FoodListScreen(),
             FoodDetailsScreen.routeName: (context) => FoodDetailsScreen(),
             CartScreen.routeName: (context) => CartScreen(),
             PlaceOrderScreen.routeName: (context) => PlaceOrderScreen(),
+            OrderHistoryScreen.routeName: (context) => OrderHistoryScreen(),
+            OrderHistoryDetailsScreen.routeName: (context) => OrderHistoryDetailsScreen(),
           },
           home: App(),
         ),

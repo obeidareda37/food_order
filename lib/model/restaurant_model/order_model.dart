@@ -49,6 +49,7 @@ class OrderModel {
     discount = double.parse(json['discount'].toString());
     isCod = json['isCod'] as bool;
     orderStatus = int.parse(json['orderStatus'].toString());
+    createdDate = int.parse(json['createdDate'].toString());
     if (json['cartItemList'] != null) {
       json['cartItemList'].forEach((v) {
         cartItemList!.add(CartModel.fromJson(v));

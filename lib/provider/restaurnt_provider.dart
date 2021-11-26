@@ -1,10 +1,8 @@
 import 'package:fastfood_app/helpers/firebase_realtime_helpers.dart';
-import 'package:fastfood_app/model/restaurant_model/cart_model.dart';
 import 'package:fastfood_app/model/restaurant_model/category_model.dart';
 import 'package:fastfood_app/model/restaurant_model/popular_item_model.dart';
 import 'package:fastfood_app/model/restaurant_model/restaurant_model.dart';
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
 
 class RestaurantProvider with ChangeNotifier {
   List<RestaurantModel> restaurantList = [];

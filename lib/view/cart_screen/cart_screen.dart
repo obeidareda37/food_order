@@ -1,11 +1,10 @@
 import 'package:fastfood_app/const/cart_consts.dart';
 import 'package:fastfood_app/const/colors.dart';
-import 'package:fastfood_app/helpers/auth_helpers.dart';
 import 'package:fastfood_app/provider/cart_provider.dart';
 import 'package:fastfood_app/provider/restaurnt_provider.dart';
 import 'package:fastfood_app/service/custom_dialog.dart';
 import 'package:fastfood_app/service/route_helpers.dart';
-import 'package:fastfood_app/view/place_order_screen/place_order_screen.dart';
+import 'package:fastfood_app/view/order_screens/place_order_screen.dart';
 import 'package:fastfood_app/widget/cart_widget/cart_image_widget.dart';
 import 'package:fastfood_app/widget/cart_widget/cart_info.dart';
 import 'package:fastfood_app/widget/cart_widget/cart_total_widget.dart';
@@ -13,6 +12,7 @@ import 'package:fastfood_app/widget/custom_button/custom_button_widget.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_elegant_number_button/flutter_elegant_number_button.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get_storage/get_storage.dart';
@@ -35,6 +35,11 @@ class _CartScreenState extends State<CartScreen> {
       builder: (context, provider, resProvider, x) {
         return Scaffold(
           appBar: AppBar(
+            systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: Colors.white,
+                statusBarIconBrightness: Brightness.dark,
+                systemNavigationBarIconBrightness: Brightness.dark,
+                systemNavigationBarColor: Colors.white),
             backgroundColor: Colors.white,
             title: CustomText(
               text: 'Cart',

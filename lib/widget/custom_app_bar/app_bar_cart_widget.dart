@@ -8,14 +8,16 @@ import 'package:fastfood_app/service/route_helpers.dart';
 import 'package:fastfood_app/view/cart_screen/cart_screen.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class AppBarWithCartButton extends StatefulWidget
     implements PreferredSizeWidget {
   String? title;
+  SystemUiOverlayStyle? systemUiOverlayStyle;
 
-  AppBarWithCartButton({this.title});
+  AppBarWithCartButton({this.title,this.systemUiOverlayStyle});
 
   @override
   State<AppBarWithCartButton> createState() => _AppBarWithCartButtonState();
@@ -29,6 +31,7 @@ class _AppBarWithCartButtonState extends State<AppBarWithCartButton> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      systemOverlayStyle: widget.systemUiOverlayStyle,
       title: CustomText(
         text: widget.title!,
         colorText: ColorConst.colorText,

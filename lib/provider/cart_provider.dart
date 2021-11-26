@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:fastfood_app/const/cart_consts.dart';
+import 'package:fastfood_app/const/const_text.dart';
 import 'package:fastfood_app/helpers/auth_helpers.dart';
 import 'package:fastfood_app/helpers/firebase_realtime_helpers.dart';
 import 'package:fastfood_app/model/restaurant_model/cart_model.dart';
@@ -16,13 +17,16 @@ class CartProvider with ChangeNotifier {
   TextEditingController addressController = TextEditingController();
   TextEditingController commentController = TextEditingController();
   bool isSuccess = false;
+  List<OrderModel> orderHistory = [];
 
   List<CartModel> cart = List<CartModel>.empty(growable: true);
   final box = GetStorage();
 
-  getCart(String restaurantId) => cart.where((element) =>
-      element.restaurantId == restaurantId &&
-      element.userUid == AuthHelpers.authHelpers.getUserId()).toList();
+  List<CartModel> getCart(String restaurantId) => cart
+      .where((element) =>
+          element.restaurantId == restaurantId &&
+          element.userUid == AuthHelpers.authHelpers.getUserId())
+      .toList();
 
   addToCart(
     FoodModel foodModel,
@@ -89,7 +93,8 @@ class CartProvider with ChangeNotifier {
       sumCart(restaurantId) + getShippingFee(restaurantId);
 
   clearCart(String restaurantId) {
-    cart = getCart(restaurantId).clear();
+    cart = getCart(restaurantId)..clear();
+    print('clear');
     saveDatabase();
     notifyListeners();
   }
@@ -131,10 +136,27 @@ class CartProvider with ChangeNotifier {
           element.restaurantId == restaurantId &&
           element.userUid == cartItem.userUid);
 
-  writeOrderToFirebase(OrderModel orderModel) async {
+  Future<void> writeOrderToFirebase(
+      OrderModel orderModel, String restaurantId) async {
+    await FirebaseRealTimeHelpers.realTimeHelpers
+        .writeOrderToFirebase(orderModel)
+        .then((value) {
+      restController();
+      isSuccess = true;
+      clearCart(orderModel.restaurantId!);
+      notifyListeners();
+    }).catchError((e) {
+      print(e);
+      isSuccess = false;
+      notifyListeners();
+    });
+  }
+
+  getUserOrdersByRestaurant(String restaurantId, String userId,
+      String statusMode ) async {
     try {
-      await FirebaseRealTimeHelpers.realTimeHelpers
-          .writeOrderToFirebase(orderModel);
+      orderHistory = await FirebaseRealTimeHelpers.realTimeHelpers
+          .getUserOrdersByRestaurant(restaurantId, userId, statusMode);
       restController();
       isSuccess = true;
       notifyListeners();
@@ -151,4 +173,6 @@ class CartProvider with ChangeNotifier {
   double calculateFinalPayment(double subTotal, double discount) {
     return subTotal - (subTotal * (discount / 100));
   }
+
+
 }

@@ -1,11 +1,13 @@
 import 'package:fastfood_app/const/colors.dart';
 import 'package:fastfood_app/const/const_text.dart';
+import 'package:fastfood_app/helpers/auth_helpers.dart';
 import 'package:fastfood_app/model/restaurant_model/order_model.dart';
 import 'package:fastfood_app/provider/cart_provider.dart';
 import 'package:fastfood_app/provider/restaurnt_provider.dart';
 import 'package:fastfood_app/service/custom_dialog.dart';
 import 'package:fastfood_app/service/route_helpers.dart';
 import 'package:fastfood_app/service/server_item_offset.dart';
+import 'package:fastfood_app/view/home_screens/home_restaurant_page.dart';
 import 'package:fastfood_app/widget/custom_button/custom_button_widget.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:fastfood_app/widget/custom_text_field/custom_text_field.dart';
@@ -161,6 +163,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                           fontSize: 20.sp,
                         ),
                         RadioListTile<String>(
+                            activeColor: ColorConst.primaryColor,
                             title: CustomText(
                               text: COD_TEXT,
                             ),
@@ -171,6 +174,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                               setState(() {});
                             }),
                         RadioListTile<String>(
+                            activeColor: ColorConst.primaryColor,
                             title: CustomText(
                               text: BRAINTREE_TEXT,
                             ),
@@ -215,6 +219,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                               restProvider.selectedRestaurant!.restaurantId!;
                           if (formKey.currentState!.validate()) {
                             var order = OrderModel(
+                              userId: AuthHelpers.authHelpers.getUserId(),
                               userPhone: '',
                               restaurantId: restaurantId,
                               cartItemList: cartProvider.getCart(restaurantId),
@@ -240,18 +245,35 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                               createdDate: serverTime,
                             );
                             print('x');
-                            cartProvider.writeOrderToFirebase(order);
-                            // if (cartProvider.isSuccess) {
-                            //   CustomDialog.customDialog.showCustomDialog(
-                            //     title: 'order Success',
-                            //     message: 'Your order has been placed',
-                            //   );
-                            // } else {
-                            //   CustomDialog.customDialog.showCustomDialog(
-                            //     title: 'order failed',
-                            //     message: 'Your order submit failed',
-                            //   );
-                            // }
+                            CustomDialog.customDialog.showCustomDialog(
+                                message: 'Do you confirm this order',
+                                title: 'Confirm Order',
+                                function: () {
+                                  cartProvider
+                                      .writeOrderToFirebase(order, restaurantId)
+                                      .then((value) {
+                                    if (cartProvider.isSuccess) {
+                                      CustomDialog.customDialog
+                                          .showCustomDialog(
+
+                                        title: 'order Success',
+                                        message: 'Your order has been placed',
+                                        isNo: false,
+                                      );
+                                      RouteHelper.routeHelper
+                                          .goToPageReplacement(
+                                          HomeRestaurantPage.routeName);
+                                    } else {
+                                      CustomDialog.customDialog
+                                          .showCustomDialog(
+                                        title: 'order failed',
+                                        message: 'Your order submit failed',
+                                        isNo: false,
+                                      );
+                                    }
+                                  });
+                                });
+
                             return;
                           } else {
                             print('faild');

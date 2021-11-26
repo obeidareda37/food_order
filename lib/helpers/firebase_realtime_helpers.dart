@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:fastfood_app/const/const_text.dart';
 import 'package:fastfood_app/const/reference_database.dart';
 import 'package:fastfood_app/model/restaurant_model/category_model.dart';
 import 'package:fastfood_app/model/restaurant_model/order_model.dart';
@@ -87,7 +88,7 @@ class FirebaseRealTimeHelpers {
     return list;
   }
 
-  Future<bool> writeOrderToFirebase(OrderModel orderModel) async {
+  writeOrderToFirebase(OrderModel orderModel) async {
     try {
       await firebaseDatabase
           .reference()
@@ -96,10 +97,32 @@ class FirebaseRealTimeHelpers {
           .child(ORDER_REF)
           .child(orderModel.orderNumber!)
           .set(orderModel.toJson());
-      return true;
     } catch (e) {
       print(e);
-      return false;
     }
+  }
+
+  Future<List<OrderModel>> getUserOrdersByRestaurant(
+      String restaurantId, String userId, String statusMode) async {
+    var orderStatusMode = statusMode == ORDER_CANCELLED ? -1 : 2;
+    var list = List<OrderModel>.empty(growable: true);
+    var reference = await firebaseDatabase
+        .reference()
+        .child(RESTAURANT_REF)
+        .child(restaurantId)
+        .child(ORDER_REF)
+        .orderByChild('userId')
+        .equalTo(userId)
+        .once();
+
+    Map<dynamic, dynamic> values = reference.value;
+    values.forEach((key, value) {
+      list.add(OrderModel.fromJson(jsonDecode(jsonEncode(value))));
+    });
+    return list
+        .where((element) => statusMode == ORDER_PROCESSING
+            ? (element.orderStatus == 0 || element.orderStatus == 1)
+            : element.orderStatus == orderStatusMode)
+        .toList();
   }
 }

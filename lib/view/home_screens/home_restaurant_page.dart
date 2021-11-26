@@ -5,8 +5,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fastfood_app/const/colors.dart';
 import 'package:fastfood_app/provider/restaurnt_provider.dart';
 import 'package:fastfood_app/service/route_helpers.dart';
+import 'package:fastfood_app/view/drawer/menu_drawer.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,7 +37,13 @@ class _HomeRestaurantPageState extends State<HomeRestaurantPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerMenu(),
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Colors.white,
+            statusBarIconBrightness: Brightness.dark,
+            systemNavigationBarIconBrightness: Brightness.dark,
+            systemNavigationBarColor: Colors.white),
         title: RichText(
           text: new TextSpan(
             // Note: Styles for TextSpans must be explicitly defined.
@@ -63,16 +71,17 @@ class _HomeRestaurantPageState extends State<HomeRestaurantPage> {
         backgroundColor: Colors.white,
         elevation: 2,
         leadingWidth: 50.w,
-        leading: IconButton(
-          onPressed: () {
-            if (widget.zoomDrawerController == null) {
-              print('null zoom');
-            }
-            widget.zoomDrawerController!.toggle!();
-          },
-          icon: Icon(
-            Icons.view_headline,
-            color: Colors.black,
+        leading: Builder(
+          builder: (context) => IconButton(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            icon: Icon(
+              Icons.view_headline,
+              color: ColorConst.primaryColor,
+            ),
           ),
         ),
       ),

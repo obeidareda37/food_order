@@ -8,7 +8,12 @@ class CustomDialog {
 
   static CustomDialog customDialog = CustomDialog._();
 
-  showCustomDialog({String? message, Function? function, String? title}) {
+  showCustomDialog({
+    String? message,
+    Function? function,
+    String? title,
+    bool isNo = true,
+  }) {
     showDialog(
         context: RouteHelper.routeHelper.navKey.currentContext!,
         builder: (context) {
@@ -32,18 +37,20 @@ class CustomDialog {
                   }
                 },
                 child: CustomText(
-                  text: 'Yes',
+                  text: isNo?'Yes':'Ok',
                   colorText: ColorConst.colorText,
                 ),
               ),
-              TextButton(
-                  onPressed: () {
-                    RouteHelper.routeHelper.back();
-                  },
-                  child: CustomText(
-                    text: 'No',
-                    colorText: ColorConst.colorText,
-                  ))
+              isNo
+                  ? TextButton(
+                      onPressed: () {
+                        RouteHelper.routeHelper.back();
+                      },
+                      child: CustomText(
+                        text: 'No',
+                        colorText: ColorConst.colorText,
+                      ))
+                  : Container()
             ],
           );
         });

@@ -12,6 +12,6 @@ Future<int> getServerTimeOffset() async {
       .child(".info/serverTimeOffset")
       .once();
   offset = source.value;
-  int estimatedServerTimeInMs = DateTime.now().microsecondsSinceEpoch + offset;
+  int estimatedServerTimeInMs = DateTime.now().millisecondsSinceEpoch + offset;
   return estimatedServerTimeInMs;
 }

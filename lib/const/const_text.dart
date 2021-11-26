@@ -1,7 +1,7 @@
 const LOGOUT_TITLE = 'Logout!';
 const LOGOUT_CONTENT = 'Do you want to logout?';
 const COD_VAL = 'COD';
-const COD_TEXT ='Cash On Delivery';
+const COD_TEXT = 'Cash On Delivery';
 const BRAINTREE_VAL = 'Brantree';
 const BRAINTREE_TEXT = 'Brantree';
 const COMMENT_TEXT = 'Comment';
@@ -10,3 +10,7 @@ const LAST_NAME = 'Last Name';
 const ADDRESS_TEXT = 'Address';
 const PAYMENT_TEXT = 'Payment';
 const PLACE_ORDER_TEXT = 'Place Order';
+const ORDER_CANCELLED = 'Cancelled';
+const ORDER_PROCESSING = 'Processing';
+const ORDER_SHIPPED = 'Shipped';
+const emptyText ='Empty';

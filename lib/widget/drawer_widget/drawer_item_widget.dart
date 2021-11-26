@@ -1,6 +1,7 @@
+import 'package:fastfood_app/const/colors.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class DrawerItemWidget extends StatelessWidget {
   String text;
   IconData icon;
@@ -16,20 +17,20 @@ class DrawerItemWidget extends StatelessWidget {
         onTap();
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Row(
           children: [
             Icon(
               icon,
-              color: Colors.white,
+              color: ColorConst.primaryColor,
             ),
             SizedBox(
-              width: 30,
+              width: 30.w,
             ),
             CustomText(
               text: text,
-              fontSize: 18,
-              colorText: Colors.white,
+              fontSize: 18.sp,
+              colorText: ColorConst.primaryColor,
               fontWeight: FontWeight.w900,
             ),
           ],

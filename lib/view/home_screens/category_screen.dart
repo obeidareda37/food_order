@@ -8,6 +8,7 @@ import 'package:fastfood_app/view/home_screens/food_list_screen.dart';
 import 'package:fastfood_app/widget/custom_app_bar/app_bar_cart_widget.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,6 +34,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
       builder: (context, provider, x) {
         return Scaffold(
             appBar: AppBarWithCartButton(
+              systemUiOverlayStyle:  SystemUiOverlayStyle(
+                statusBarColor: Colors.white,
+                statusBarIconBrightness: Brightness.dark,
+                systemNavigationBarIconBrightness: Brightness.dark,
+                systemNavigationBarColor: Colors.white),
               title: '${provider.selectedRestaurant!.name}',
             ),
             body: Padding(
