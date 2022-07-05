@@ -7,7 +7,6 @@ import 'package:fastfood_app/view/auth_screen/login_screen.dart';
 import 'package:fastfood_app/view/home_screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
 
 class AuthProvider with ChangeNotifier {
   TextEditingController emailController = TextEditingController();
@@ -93,8 +92,4 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  fillControllers() {
-    fNameController.text = user!.fname!;
-    emailController.text = user!.email!;
-  }
 }

@@ -1,8 +1,6 @@
 import 'package:fastfood_app/model/restaurant_model/order_model.dart';
-import 'package:fastfood_app/provider/cart_provider.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class OrderHistoryDetailsScreen extends StatelessWidget {
   static const routeName = 'OrderHistoryDetailsScreen';

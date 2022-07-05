@@ -44,9 +44,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
         elevation: 0,
         leadingWidth: 50.w,
         leading: IconButton(
-          onPressed: () {
-            RouteHelper.routeHelper.back();
-          },
+          onPressed: () => RouteHelper.routeHelper.back(),
           icon: Icon(
             Icons.arrow_back_ios,
             color: Colors.black,
@@ -132,7 +130,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           setState(() {
                             if (formKey.currentState!.validate()) {
                               print('x');
-                              provider.login();
+                              provider.resetPassword();
                               return;
                             } else {
                               print('faild');

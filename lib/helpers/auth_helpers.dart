@@ -1,6 +1,5 @@
 import 'package:fastfood_app/service/custom_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 
 class AuthHelpers {
   AuthHelpers._();

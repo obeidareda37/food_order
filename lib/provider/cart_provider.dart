@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:fastfood_app/const/cart_consts.dart';
-import 'package:fastfood_app/const/const_text.dart';
 import 'package:fastfood_app/helpers/auth_helpers.dart';
 import 'package:fastfood_app/helpers/firebase_realtime_helpers.dart';
 import 'package:fastfood_app/model/restaurant_model/cart_model.dart';

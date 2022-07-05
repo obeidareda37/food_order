@@ -4,7 +4,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fastfood_app/const/colors.dart';
 import 'package:fastfood_app/provider/restaurnt_provider.dart';
-import 'package:fastfood_app/service/route_helpers.dart';
 import 'package:fastfood_app/view/drawer/menu_drawer.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:flutter/material.dart';

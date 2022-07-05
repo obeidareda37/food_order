@@ -7,8 +7,6 @@ import 'package:fastfood_app/model/restaurant_model/cart_model.dart';
 import 'package:fastfood_app/provider/cart_provider.dart';
 import 'package:fastfood_app/provider/restaurnt_provider.dart';
 import 'package:fastfood_app/service/route_helpers.dart';
-import 'package:fastfood_app/view/drawer/drawer_zoom_screen.dart';
-import 'package:fastfood_app/view/drawer/menu_drawer.dart';
 import 'package:fastfood_app/view/home_screens/home_restaurant_page.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:flutter/material.dart';

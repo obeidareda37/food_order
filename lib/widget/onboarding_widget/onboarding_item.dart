@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart' as easy;
 
-class onBoardingWidget extends StatelessWidget {
+class OnBoardingWidget extends StatelessWidget {
   String? title;
   String? description;
   String? image;
 
-  onBoardingWidget({this.title, this.description, this.image});
+  OnBoardingWidget({this.title, this.description, this.image});
 
   @override
   Widget build(BuildContext context) {

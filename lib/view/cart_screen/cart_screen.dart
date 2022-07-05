@@ -10,7 +10,6 @@ import 'package:fastfood_app/widget/cart_widget/cart_info.dart';
 import 'package:fastfood_app/widget/cart_widget/cart_total_widget.dart';
 import 'package:fastfood_app/widget/custom_button/custom_button_widget.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_elegant_number_button/flutter_elegant_number_button.dart';

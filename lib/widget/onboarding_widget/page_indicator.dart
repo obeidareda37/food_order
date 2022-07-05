@@ -2,10 +2,10 @@ import 'package:fastfood_app/const/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class buildPageIndicator extends StatelessWidget {
+class BuildPageIndicator extends StatelessWidget {
   final bool isCurrentPage;
 
-  buildPageIndicator(this.isCurrentPage);
+  BuildPageIndicator(this.isCurrentPage);
 
   @override
   Widget build(BuildContext context) {

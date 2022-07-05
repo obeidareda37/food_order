@@ -1,8 +1,6 @@
-import 'package:fastfood_app/const/colors.dart';
 import 'package:fastfood_app/service/route_helpers.dart';
 import 'package:fastfood_app/view/auth_screen/register_screen.dart';
 import 'package:fastfood_app/widget/custom_button/custom_button_widget.dart';
-import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:fastfood_app/widget/onboarding_widget/onboarding_item.dart';
 import 'package:fastfood_app/widget/onboarding_widget/page_indicator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,17 +26,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   }
 
   List<Widget> _pages = [
-    onBoardingWidget(
+    OnBoardingWidget(
       title: "onBoardingTitle1",
       description: 'onBoardingSubTitle1',
       image: 'assets/images/onboarding.png',
     ),
-    onBoardingWidget(
+    OnBoardingWidget(
       title: 'onBoardingTitle2',
       description: 'onBoardingSubTitle2',
       image: 'assets/images/onboarding3.png',
     ),
-    onBoardingWidget(
+    OnBoardingWidget(
       title: 'onBoardingTitle3',
       description: 'onBoardingSubTitle3',
       image: 'assets/images/onboarding2.png',
@@ -76,8 +74,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       children: <Widget>[
                         for (int i = 0; i < _pages.length; i++)
                           i == _currentPage
-                              ? buildPageIndicator(true)
-                              : buildPageIndicator(false),
+                              ? BuildPageIndicator(true)
+                              : BuildPageIndicator(false),
                       ],
                     ),
                   ),

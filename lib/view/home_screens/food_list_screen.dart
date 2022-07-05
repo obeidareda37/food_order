@@ -1,18 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fastfood_app/const/colors.dart';
 import 'package:fastfood_app/model/restaurant_model/category_model.dart';
 import 'package:fastfood_app/model/restaurant_model/food_model.dart';
 import 'package:fastfood_app/provider/cart_provider.dart';
 import 'package:fastfood_app/provider/restaurnt_provider.dart';
-import 'package:fastfood_app/service/route_helpers.dart';
-import 'package:fastfood_app/view/home_screens/food_details_screen.dart';
 import 'package:fastfood_app/widget/custom_app_bar/app_bar_cart_widget.dart';
-import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:fastfood_app/widget/food_widget/food_list_item_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class FoodListScreen extends StatefulWidget {

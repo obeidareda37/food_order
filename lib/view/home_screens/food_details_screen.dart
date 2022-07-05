@@ -1,5 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fastfood_app/const/colors.dart';
 import 'package:fastfood_app/model/restaurant_model/addon_model.dart';
 import 'package:fastfood_app/model/restaurant_model/food_model.dart';
 import 'package:fastfood_app/model/restaurant_model/size_model.dart';
@@ -14,8 +12,6 @@ import 'package:fastfood_app/widget/food_widget/food_details_name_widget.dart';
 import 'package:fastfood_app/widget/food_widget/food_details_size_Widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_elegant_number_button/flutter_elegant_number_button.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 

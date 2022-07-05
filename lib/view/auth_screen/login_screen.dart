@@ -1,6 +1,5 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:fastfood_app/const/colors.dart';
-import 'package:fastfood_app/helpers/auth_helpers.dart';
 import 'package:fastfood_app/provider/auth_provider.dart';
 import 'package:fastfood_app/service/route_helpers.dart';
 import 'package:fastfood_app/view/auth_screen/forget_password.dart';
@@ -12,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart' as easy;
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {

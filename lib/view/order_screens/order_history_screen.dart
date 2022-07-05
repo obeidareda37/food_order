@@ -1,10 +1,7 @@
 import 'package:fastfood_app/const/colors.dart';
 import 'package:fastfood_app/const/const_text.dart';
-import 'package:fastfood_app/helpers/auth_helpers.dart';
 import 'package:fastfood_app/provider/cart_provider.dart';
-import 'package:fastfood_app/provider/restaurnt_provider.dart';
 import 'package:fastfood_app/service/route_helpers.dart';
-import 'package:fastfood_app/widget/order_history_widget/order_history_list_widget.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:fastfood_app/widget/order_history_widget/order_history_widget.dart';
 import 'package:flutter/material.dart';

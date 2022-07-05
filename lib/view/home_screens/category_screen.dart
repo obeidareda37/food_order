@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fastfood_app/const/colors.dart';
 import 'package:fastfood_app/provider/restaurnt_provider.dart';

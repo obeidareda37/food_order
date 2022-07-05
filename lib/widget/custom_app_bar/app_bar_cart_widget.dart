@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:badges/badges.dart';
 import 'package:fastfood_app/const/colors.dart';
 import 'package:fastfood_app/provider/cart_provider.dart';

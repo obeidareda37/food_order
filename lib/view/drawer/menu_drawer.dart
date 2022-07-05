@@ -8,7 +8,6 @@ import 'package:fastfood_app/view/home_screens/category_screen.dart';
 import 'package:fastfood_app/view/home_screens/home_restaurant_page.dart';
 import 'package:fastfood_app/view/home_screens/home_screen.dart';
 import 'package:fastfood_app/view/order_screens/order_history_screen.dart';
-import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:fastfood_app/widget/drawer_widget/drawer_item_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

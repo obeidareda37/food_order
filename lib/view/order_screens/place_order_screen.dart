@@ -11,7 +11,6 @@ import 'package:fastfood_app/view/home_screens/home_restaurant_page.dart';
 import 'package:fastfood_app/widget/custom_button/custom_button_widget.dart';
 import 'package:fastfood_app/widget/custom_text.dart';
 import 'package:fastfood_app/widget/custom_text_field/custom_text_field.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

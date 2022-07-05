@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:fastfood_app/const/const_text.dart';
 import 'package:fastfood_app/helpers/auth_helpers.dart';
 import 'package:fastfood_app/model/restaurant_model/order_model.dart';
